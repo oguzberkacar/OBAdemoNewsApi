@@ -1,20 +1,47 @@
-<ion-header [translucent]="true">
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-item lines="none">
+      <ion-label>
+        <p>Hello</p>
+        <h3></h3>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-button expand="block" color="primary" (click)="showNews()">Göster/Gizle</ion-button>
+      </ion-buttons>
+    </ion-item>
   </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-content [fullscreen]="true">
+    <form [formGroup]="form">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>I'm Oğuz Berk Açar</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Here my app for searching news with spesefic topic
+        </ion-card-content>
+        <ion-item>
+          <ion-input id="input" color="dark" position="fixed" placeholder="Please enter a topic" type="text"
+            size="block" formControlName="name"></ion-input>
+          <ion-button (click)="search()">Search</ion-button>
+        </ion-item>
+      </ion-card>
+
+      <ion-card [hidden]="!isShowNews" *ngFor="let article of articles">
+        <ion-img [src]="article.urlToImage"></ion-img>
+        <ion-card-header>
+          <ion-card-subtitle>{{article.publishedAt | date}}</ion-card-subtitle>
+          <ion-card-title>
+            {{article.title}}
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          {{article.description}}
+        </ion-card-content>
+      </ion-card>
+    </form>
+  </ion-content>
