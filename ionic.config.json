@@ -1,0 +1,7 @@
+{
+  "name": "OBAdemoNewsApi",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
