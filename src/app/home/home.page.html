@@ -1,47 +1,169 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-item lines="none">
-      <ion-label>
-        <p>Hello</p>
-        <h3></h3>
-      </ion-label>
-      <ion-buttons slot="end">
-        <ion-button expand="block" color="primary" (click)="showNews()">Göster/Gizle</ion-button>
+  <div class="bg-black">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
       </ion-buttons>
-    </ion-item>
-  </ion-toolbar>
+      <ion-item lines="none">
+        <ion-label>
+          <p>Oğuz Berk Açar</p>
+        </ion-label>
+        <ion-buttons slot="end">
+          <ion-button expand="block" color="primary" (click)="showNews()"
+            >Göster/Gizle</ion-button
+          >
+        </ion-buttons>
+      </ion-item>
+    </ion-toolbar>
+  </div>
 
   <ion-content [fullscreen]="true">
-    <form [formGroup]="form">
+    <div class="bg-zinc-100 mx-5 md:mx-10 pb-5 rounded-lg">
+      <form (ngSubmit)="search()"  [formGroup]="form">
+        <div class="mx-5 md:mx-10 rounded-lg pt-5">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Here my app for searching news with spesefic topic</ion-card-title>
+            </ion-card-header>
+            <ion-item>
+              <ion-input
+                id="input"
+                color="dark"
+                position="fixed"
+                placeholder="Please enter a topic"
+                type="text"
+                size="block"
+                formControlName="name"
+              ></ion-input>
+              <ion-button >Search</ion-button>
+            </ion-item>
+          </ion-card>
+        </div>
 
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title>I'm Oğuz Berk Açar</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          Here my app for searching news with spesefic topic
-        </ion-card-content>
-        <ion-item>
-          <ion-input id="input" color="dark" position="fixed" placeholder="Please enter a topic" type="text"
-            size="block" formControlName="name"></ion-input>
-          <ion-button (click)="search()">Search</ion-button>
-        </ion-item>
-      </ion-card>
+        <div
+          class="flex items-center justify-between border-t mt-5 border-gray-200 bg-white px-4 py-3 sm:px-6 mx-5 md:mx-10 rounded-lg"
+        >
+          <div
+            class="flex w-full space-y-2 sm:space-y-0 flex-col sm:flex-row sm:flex-1 items-center justify-between"
+          >
+            <div>
+              <p class="text-sm text-gray-700">
+                Showing
+                <span class="font-medium">{{startNumber}}</span>
+                to
+                <span class="font-medium">{{endNumber}}</span>
+                of
+                <span class="font-medium">60</span>
+                results
+              </p>
+            </div>
+            <div>
+              <nav
+                class="isolate inline-flex -space-x-px border rounded-md shadow-sm"
+                aria-label="Pagination"
+              >
+                <!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" -->
+                <button
+                  href="#"
+                  (click)="clickS(0,6)"
+                  class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"
+                >
+                  1
+                </button>
+                <button
+                  href="#"
+                  (click)="clickS(6,12)"
+                  class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"
+                >
+                  2
+                </button>
+                <button
+                  href="#"
+                  (click)="clickS(12,18)"
+                  class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"
+                >
+                  3
+                </button>
+                <button
+                  href="#"
+                  (click)="clickS(18,24)"
+                  class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"
+                >
+                  4
+                </button>
+                <button
+                  href="#"
+                  (click)="clickS(24,30)"
+                  class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"
+                >
+                  5
+                </button>
+                <button
+                  href="#"
+                  (click)="clickS(30,36)"
+                  class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"
+                >
+                  6
+                </button>
+                <button
+                  href="#"
+                  (click)="clickS(36,42)"
+                  class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"
+                >
+                  7
+                </button>
+                <button
+                  href="#"
+                  (click)="clickS(42,48)"
+                  class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"
+                >
+                  8
+                </button>
+                <button
+                  href="#"
+                  (click)="clickS(48,54)"
+                  class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"
+                >
+                  9
+                </button>
+                <button
+                  href="#"
+                  (click)="clickS(54,60)"
+                  class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"
+                >
+                  10
+                </button>
+              </nav>
+            </div>
+          </div>
+        </div>
 
-      <ion-card [hidden]="!isShowNews" *ngFor="let article of articles">
-        <ion-img [src]="article.urlToImage"></ion-img>
-        <ion-card-header>
-          <ion-card-subtitle>{{article.publishedAt | date}}</ion-card-subtitle>
-          <ion-card-title>
-            {{article.title}}
-          </ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          {{article.description}}
-        </ion-card-content>
-      </ion-card>
-    </form>
-  </ion-content>
+        <div
+          class="bg-blue-300 mx-5 md:mx-10 my-10 p-5 rounded-lg grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-center"
+        >
+          <ion-card
+            class="flex flex-col h-full pb-3 items-center justify-start"
+            [hidden]="!isShowNews"
+            *ngFor="let article of articles"
+          >
+            <a target="_blank" [href]="article.url">
+              <div class="w-full">
+                <img
+                  class="w-full h-48 object-cover"
+                  [src]="article.urlToImage"
+                />
+              </div>
+              <ion-card-header>
+                <ion-card-subtitle
+                  >{{article.publishedAt | date}}</ion-card-subtitle
+                >
+                <ion-card-title> {{article.title}} </ion-card-title>
+              </ion-card-header>
+              <ion-card-content> {{article.description}} </ion-card-content>
+            </a>
+          </ion-card>
+        </div>
+      </form>
+    </div>
+  </ion-content></ion-header
+>

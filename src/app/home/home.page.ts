@@ -19,17 +19,31 @@ export class HomePage implements OnInit {
   articles: any;
   isShowNews = true;
   images: any;
+  totalArticle:any;
 
   constructor(private http: HttpClient, private formBuilder: FormBuilder) { }
+  
+  startNumber = 0;
+  endNumber = 6;
 
+  
   ngOnInit() {
     // building form
     this.form = new HomePageForm(this.formBuilder).createForm();
 
-    // default value for news, btw i am from Antalya :)
-    this.loadNews('antalya');
+    // default value for news
+    this.loadNews('New York');
+
+   
   }
 
+
+  clickS(s,e){
+    this.startNumber = s;
+    this.endNumber = e;
+    
+    this.articles = this.totalArticle.slice(s,e);
+  }
   // geting value of topic from form and load news   
   search() {
     const topic = this.form.get('name').value;
@@ -39,8 +53,9 @@ export class HomePage implements OnInit {
   // send the topic to news api and get the news
   loadNews(p) {
     this.getNews(p).subscribe(news => {
-      this.articles = news['articles'];
-      console.log(this.articles)
+      this.totalArticle = news['articles']
+      this.articles = this.totalArticle.slice(0, 10);
+      console.log(news['articles'])
     })
   }
 
@@ -49,9 +64,11 @@ export class HomePage implements OnInit {
     this.isShowNews = !this.isShowNews
   }
 
+
+
   // get the news from news api
   getNews(url): Observable<any> {
-    return this.http.get(`${newsUrl}/everything?q=${url}&apiKey=${newsApi}`)
+    return this.http.get(`${newsUrl}/everything?q=${url}&apiKey=${newsApi}&pageSize=60`)
   }
 }
 
