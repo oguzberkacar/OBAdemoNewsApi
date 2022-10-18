@@ -1,13 +1,13 @@
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 
 export class HomePageForm{
-    private formBuilder: FormBuilder;
+    private formBuilder: UntypedFormBuilder;
 
-    constructor(formBuilder: FormBuilder){
+    constructor(formBuilder: UntypedFormBuilder){
         this.formBuilder = formBuilder;
     }
 
-    createForm() :FormGroup{
+    createForm() :UntypedFormGroup{
         return this.formBuilder.group({
             name:['',[Validators.required]]
         });

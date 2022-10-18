@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { HomePageForm } from './home.page.form';
 
 // api key&url from newsapi.org
@@ -15,13 +15,13 @@ const newsUrl = environment.newUrl;
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  form: FormGroup;
+  form: UntypedFormGroup;
   articles: any;
   isShowNews = true;
   images: any;
   totalArticle:any;
 
-  constructor(private http: HttpClient, private formBuilder: FormBuilder) { }
+  constructor(private http: HttpClient, private formBuilder: UntypedFormBuilder) { }
   
   startNumber = 0;
   endNumber = 6;
